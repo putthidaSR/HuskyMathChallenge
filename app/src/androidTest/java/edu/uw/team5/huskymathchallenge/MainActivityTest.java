@@ -4,8 +4,6 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import com.robotium.solo.Solo;
 
-import java.util.Random;
-
 /**
  * Created by lebui on 11/25/2015.
  */
@@ -31,36 +29,16 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
 
     public void testDataShowsUp() {
         solo.unlockScreen();
-        boolean textFound = solo.searchText("mmuppa");
+        boolean textFound = solo.searchText("Enter Email");
         assertTrue("User List retrieved", textFound);
 
     }
 
-    public void testAddUser() {
-        solo.clickOnText("AddUser");
-        boolean textFound = solo.searchText("Enter your email");
-        assertTrue("Went to the next fragment", textFound);
-    }
+    public void testDataShowsU1p() {
+        solo.unlockScreen();
+        boolean textFound = solo.searchText("Don't have an account yet?");
+        assertTrue("User List retrieved", textFound);
 
-    public void testAddUserFragment() {
-        solo.clickOnText("AddUser");
-        Random random = new Random();
-        int number = random.nextInt(10000);
-        solo.enterText(0, "test@test"+number + ".com");
-        solo.enterText(1, "somepassword");
-        solo.clickOnButton("Add");
-        boolean textFound = solo.searchText("User successfully inserted");
-        assertTrue("User add passed", textFound);
     }
-
-    public void testAddDuplicateUserFragment() {
-        solo.clickOnText("AddUser");
-        solo.enterText(0, "mmuppa@uw.edu");
-        solo.enterText(1, "testing");
-        solo.clickOnButton("Add");
-        boolean textFound = solo.searchText("Failed :");
-        assertTrue("User add failed", textFound);
-    }
-
 
 }

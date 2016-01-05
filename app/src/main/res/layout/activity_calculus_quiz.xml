@@ -1,13 +1,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                tools:context=".MainActivity">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#00b8d4"
+              android:orientation="vertical"
+              tools:context=".MainActivity">
     <TextView
         android:id="@+id/algebraQuestionView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#e3f2fd"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     <RadioGroup
         android:id="@+id/radioAnswer"
@@ -16,22 +18,26 @@
         android:layout_weight="0.00" >
         <RadioButton
             android:id="@+id/radioAnswer1"
+            android:textColor="#e3f2fd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
             />
         <RadioButton
             android:id="@+id/radioAnswer2"
+            android:textColor="#e3f2fd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
         <RadioButton
             android:id="@+id/radioAnswer3"
+            android:textColor="#e3f2fd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
         <RadioButton
             android:id="@+id/radioAnswer4"
+            android:textColor="#e3f2fd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
@@ -42,6 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/submit"
+        android:textColor="#e3f2fd"
+        android:background="#1a237e"
         android:id="@+id/buttonSubmit"
         android:layout_gravity="right"/>
 
@@ -54,6 +62,7 @@
     <TextView
         android:id="@+id/timeView"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/clock"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

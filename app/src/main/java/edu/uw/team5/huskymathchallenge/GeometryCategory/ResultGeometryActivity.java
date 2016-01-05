@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import edu.uw.team5.huskymathchallenge.MainActivity;
+import edu.uw.team5.huskymathchallenge.Menu;
 import edu.uw.team5.huskymathchallenge.R;
 
 public class ResultGeometryActivity extends AppCompatActivity {
@@ -46,6 +48,28 @@ public class ResultGeometryActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ResultGeometryActivity.this, ViewScoreActivity.class);
+                startActivity(intent);
+
+            }
+
+        });
+
+        Button mLogout = (Button) findViewById(R.id.quitbt);
+        mLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ResultGeometryActivity.this, MainActivity.class);
+                startActivity(intent);
+
+            }
+
+        });
+
+        Button mPlayAgain = (Button) findViewById(R.id.playagainbtn);
+        mPlayAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ResultGeometryActivity.this, Menu.class);
                 startActivity(intent);
 
             }

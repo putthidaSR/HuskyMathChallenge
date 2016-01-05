@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name">Husky Math Challenge</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_facebook_login">FacebookLoginActivity</string>
+    <string name="action_logout">Log Out</string>
+
+    <!--Facebook ID here:-->
+    <string name="app_ID"></string>
+
+    <string name="currentoperatorlabel">CURRENT OPERATOR:</string>
+    <string name="targetnumberlabel">TARGET NUMBER:</string>
+    <string name="currentsumlabel">CURRENT TOTAL:</string>
+    <string name="elapsedtimelabel">ELAPSED TIME:</string>
+    <string name="addition">\u002B</string>
+    <string name="subtraction">\u2212</string>
+    <string name="multiplication">\u00D7</string>
+    <string name="division">\u00F7</string>
+    <string name="squareold">\u25FB</string>
+    <string name="square">x\u00B2</string>
+    <string name="cube">y\u00B3</string>
+    <string name="squareroot">\u221A</string>
+    <string name="arrow">\u2190</string>
+    <string name="flocktext">0</string>
+    <string name="splashpage_title">MATH:MATH</string>
+    <string name="newgame">NEW GAME</string>
+    <string name="copyright">\u00A9</string>
+    <string name="quote"><i>Arithmetic is where numbers fly like pigeons in and out of your head.</i> ~Sandburg</string>
+    <string name="send_to">\Send to...</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="instruction_button">Instruction</string>
+    <string name="view_previous_score">View All Previous Scores</string>
+    <string name="choose_category">Choose Category</string>
+    <string name="leaderboardbtn">Leaderboard</string>
+    <string name="quitbt">Log out</string>
+    <string name="sharebtn">Share</string>
+    <string name="playagainbtn">Play Again!</string>
+    <string name="result">Here is your result...</string>
+
+    <string name="title_activity_result_algebra_quiz">ResultAlgebraQuizActivity</string>
+
+    <string name="algebra">Algebra</string>
+    <string name="calculusButton">Calculus</string>
+    <string name="saveScore">Save</string>
+    <string name="submit">Submit</string>
+    <string name="title_activity_category">CategoryActivity</string>
+
+    <string name="usernameView">Enter your favorite name</string>
+    <string name="backButton">Back to Menu</string>
+
+    <string name="title_activity_result_calculus_quiz">ResultCalculusQuizActivity</string>
+
+    <string name="readbtn">Read</string>
+    <string name="stopreadingbtn">Stop</string>
+
+    <string name="choices">Select Number of Choices</string>
+    <string name="correct">correct</string>
+    <string name="guesses">guesses</string>
+    <string name="incorrect_answer">Incorrect!</string>
+    <string name="of">of</string>
+    <string name="ok">OK</string>
+    <string name="question">Question</string>
+    <string name="quiz_title">Ten Question Flag Quiz</string>
+    <string name="shape">Select Shape</string>
+    <string name="reset_quiz">Reset Quiz</string>
+    <string-array name="shapeList">
+        <item>Shape</item>
+        <item>Shape1</item>
+    </string-array>
+    <string-array name="guessesList">
+        <item>3</item>
+        <item>6</item>
+        <item>9</item>
+    </string-array>
+
+    <string name="nextButtonScoreView">Next</string>
+    <string name="previousButtonSCoreView">Previous</string>
+
+
+</resources>

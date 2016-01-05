@@ -1,11 +1,10 @@
 package edu.uw.team5.huskymathchallenge.GeometryCategory;
 
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
-import edu.uw.team5.huskymathchallenge.GeometryCategory.GeometryActivity;
 import edu.uw.team5.huskymathchallenge.R;
 
 public class ViewScoreActivity extends AppCompatActivity {
@@ -18,7 +17,7 @@ public class ViewScoreActivity extends AppCompatActivity {
         //get text view
         TextView scoreView = (TextView)findViewById(R.id.high_scores_list);
         //get shared prefs
-        SharedPreferences scorePrefs = getSharedPreferences(GeometryActivity.GAME_PREFS, 0);
+        SharedPreferences scorePrefs = getSharedPreferences(GeometryQuizActivity.GAME_PREFS, 0);
         //get scores
         String[] savedScores = scorePrefs.getString("highScores", "").split("\\|");
         //build string

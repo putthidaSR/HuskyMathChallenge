@@ -1,15 +1,16 @@
 package edu.uw.team5.huskymathchallenge.CalculusCategory;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -20,9 +21,24 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+
+import edu.uw.team5.huskymathchallenge.Menu;
+import edu.uw.team5.huskymathchallenge.R;
+import edu.uw.team5.huskymathchallenge.model.Score;
 
 public class CalculusQuizActivity extends AppCompatActivity implements View.OnClickListener {
+
+    //shared preferences
+    private SharedPreferences gamePrefs;
+    private SharedPreferences scorePrefs;
+    public static final String GAME_PREFS = "CalculusFile";
+    public static final String SCORE_PREFS = "CalculusScore";
 
     private TextView mAlgQuestion, mLiveView, mTimerView;
     private RadioGroup mRadioGroup;
@@ -47,10 +63,17 @@ public class CalculusQuizActivity extends AppCompatActivity implements View.OnCl
     private final long startTime = 60 * 1000;
     private final long interval = 1 * 1000;
     private CountDownTimer countDownTimer;
+
+    private EditText mUserName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculus_quiz);
+
+        //initiate shared prefs
+        gamePrefs = getSharedPreferences(GAME_PREFS, 0);
+        scorePrefs = getSharedPreferences(SCORE_PREFS, 0);
 
         //Lookup view for data into the template view using the data object
         mAlgQuestion = (TextView) findViewById(R.id.algebraQuestionView);
@@ -98,13 +121,19 @@ public class CalculusQuizActivity extends AppCompatActivity implements View.OnCl
 //       Toast.makeText( AlgebraQuizActivity.this ,"SCORE" + index, duration).show();
         if ( mQuestion.getCorrect() == index){
             mScore++;
+
+
             Toast.makeText( CalculusQuizActivity.this ,"Right And Your Current Score: " + mScore, duration).show();
+
+            setHighScore();
+            saveScore();
+
         }else {
             mLive--;
             if (mLive < 0){
-                timerUp();
+                gameOver();
             }
-            Toast.makeText( CalculusQuizActivity.this ,"Wrong and You have " + mLive + " live left", duration).show();
+            Toast.makeText( CalculusQuizActivity.this ,"Wrong and You have " + mLive + " lives left", duration).show();
         }
 
 
@@ -112,6 +141,7 @@ public class CalculusQuizActivity extends AppCompatActivity implements View.OnCl
             mQuestion = mList.get(mQuestionId);
             setNextQuestion();
         }else {
+            //???????
             Intent intent = new Intent(v.getContext(), ResultCalculusQuizActivity.class);
             Bundle bundle = new Bundle();
             bundle.putInt("Score", mScore);
@@ -195,22 +225,187 @@ public class CalculusQuizActivity extends AppCompatActivity implements View.OnCl
 
     }
 
-    public void timerUp(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(
-                CalculusQuizActivity.this);
+//    public void timerUp(){
+//        AlertDialog.Builder builder = new AlertDialog.Builder(
+//                CalculusQuizActivity.this);
+//
+//        builder.setTitle("Times up or No more lives")
+//                .setMessage("Go back and try again if you want!")
+//                .setCancelable(false)
+//                .setNeutralButton(android.R.string.ok,
+//                        new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface dialog, int id) {
+//                                Intent intent = new Intent(getBaseContext(), ResultCalculusQuizActivity.class);
+//                                startActivity(intent);
+//                            }
+//                        });
+//        AlertDialog alert = builder.create();
+//        alert.show();
+//    }
 
-        builder.setTitle("Times up or No more lives")
-                .setMessage("Go back and try again if you want!")
-                .setCancelable(false)
-                .setNeutralButton(android.R.string.ok,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                Intent intent = new Intent(getBaseContext(), ResultCalculusQuizActivity.class);
-                                startActivity(intent);
-                            }
-                        });
-        AlertDialog alert = builder.create();
-        alert.show();
+    public void timerUp(){
+    // Create Object of Dialog class
+    final Dialog saveName = new Dialog(CalculusQuizActivity.this);
+    // Set GUI of login screen
+    saveName.setContentView(R.layout.dialog_save_name);
+    saveName.setTitle("Save name...");
+
+    // Init button of login GUI
+    Button btnLogin = (Button) saveName.findViewById(R.id.saveBtn);
+    Button btnCancel = (Button) saveName.findViewById(R.id.btnCancel);
+    mUserName = (EditText) saveName.findViewById(R.id.username);
+
+    // Attached listener for login GUI button
+    btnLogin.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            SharedPreferences.Editor scoreEdit = scorePrefs.edit();
+            scoreEdit.putString("Name", mUserName.getText().toString());
+
+            scoreEdit.commit();
+
+            if (mUserName.getText().toString().trim().length() > 0) {
+                Intent intent = new Intent(CalculusQuizActivity.this, ResultCalculusQuizActivity.class);
+                startActivity(intent);
+
+                // Redirect to dashboard / home screen.
+                saveName.dismiss();
+            } else {
+                Toast.makeText(CalculusQuizActivity.this,
+                        "Please enter Username", Toast.LENGTH_LONG).show();
+            }
+        }
+    });
+    btnCancel.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //saveName.dismiss();
+            Intent intent = new Intent(CalculusQuizActivity.this, Menu.class);
+            startActivity(intent);
+        }
+    });
+
+    // Make dialog box visible.
+    saveName.show();
+
+
+}
+
+    public void gameOver(){
+        // Create Object of Dialog class
+        final Dialog saveName = new Dialog(CalculusQuizActivity.this);
+        // Set GUI of login screen
+        saveName.setContentView(R.layout.dialog_save_name);
+        saveName.setTitle("Save name...");
+
+        // Init button of login GUI
+        Button btnLogin = (Button) saveName.findViewById(R.id.saveBtn);
+        Button btnCancel = (Button) saveName.findViewById(R.id.btnCancel);
+        mUserName = (EditText) saveName.findViewById(R.id.username);
+
+        // Attached listener for login GUI button
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SharedPreferences.Editor scoreEdit = scorePrefs.edit();
+                scoreEdit.putString("Name", mUserName.getText().toString());
+
+                scoreEdit.commit();
+
+                if (mUserName.getText().toString().trim().length() > 0) {
+                    Intent intent = new Intent(CalculusQuizActivity.this, ResultCalculusQuizActivity.class);
+                    startActivity(intent);
+
+                    // Redirect to dashboard / home screen.
+                    saveName.dismiss();
+                } else {
+                    Toast.makeText(CalculusQuizActivity.this,
+                            "Please enter Username", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CalculusQuizActivity.this, Menu.class);
+                startActivity(intent);
+                //saveName.dismiss();
+            }
+        });
+
+        // Make dialog box visible.
+        saveName.show();
+
     }
 
+
+    private void saveScore() {
+
+        int exScore = mScore;
+        if(exScore>0){
+            //we have a valid score
+            SharedPreferences.Editor scoreEdit = scorePrefs.edit();
+            scoreEdit.putInt("Score", exScore);
+            scoreEdit.commit();
+        }
+    }
+
+    //set high score
+    private void setHighScore(){
+        int exScore = mScore;
+        //String name = mUserName.getText().toString();
+        if(exScore > 0) {
+            //we have a valid score
+            SharedPreferences.Editor scoreEdit = gamePrefs.edit();
+            DateFormat dateForm = new SimpleDateFormat("dd MMMM yyyy");
+            String dateOutput = dateForm.format(new Date());
+            //get existing scores
+            String scores = gamePrefs.getString("highScores", "");
+            //check for scores
+            if (scores.length() > 0) {
+                //we have existing scores
+                List<Score> scoreStrings = new ArrayList<Score>();
+                //split scores
+                String[] exScores = scores.split("\\|");
+                //add score object for each
+                for (String eSc : exScores) {
+                    String[] parts = eSc.split(" - ");
+                    scoreStrings.add(new Score(parts[0], Integer.parseInt(parts[1])));
+                }
+                //new score
+                Score newScore = new Score(dateOutput, exScore);
+                scoreStrings.add(newScore);
+                //sort
+                Collections.sort(scoreStrings);
+                //get top ten
+                StringBuilder scoreBuild = new StringBuilder("");
+                for (int s=0; s<scoreStrings.size(); s++) {
+                    if(s>=5) break;
+                    if(s>0) scoreBuild.append("|");
+                    scoreBuild.append(scoreStrings.get(s).getScoreText());
+                }
+
+                //write to prefs
+                scoreEdit.putString("highScores", scoreBuild.toString());
+
+                //     scoreEdit.putString("highScores", name + ": " + scoreBuild.toString());
+                scoreEdit.commit();
+
+            } else {
+                //no existing scores
+                scoreEdit.putString("highScores", dateOutput + " - " + exScore);
+                //   scoreEdit.putString("highScores", name + ": " + dateOutput + " - " + exScore);
+
+                scoreEdit.commit();
+            }
+        }
+    }
+
+    //set high score if activity destroyed
+    protected void onDestroy(){
+        setHighScore();
+        super.onDestroy();
+    }
 }

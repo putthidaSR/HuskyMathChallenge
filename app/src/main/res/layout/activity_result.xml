@@ -8,6 +8,88 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="edu.uw.team5.huskymathchallenge.model.ResultActivity">
+    android:background="#00b8d4"
+    tools:context="edu.uw.team5.huskymathchallenge.GeometryCategory.ResultGeometryActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#e3f2fd"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/result"
+        android:id="@+id/result"
+        android:layout_alignParentTop="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#e3f2fd"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/displayScorebtn" android:layout_below="@+id/result"
+        android:layout_centerHorizontal="true" android:layout_marginTop="76dp"/>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="39dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sharebtn"
+            android:id="@+id/sharebtn"
+            android:textColor="#e3f2fd"
+            android:background="#1a237e"
+            android:layout_alignTop="@+id/leaderboardbtn"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_row="0"
+            android:layout_column="0"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/playagainbtn"
+            android:textColor="#e3f2fd"
+            android:background="#1a237e"
+            android:id="@+id/playagainbtn"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_row="0"
+            android:layout_column="2"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/quitbt"
+            android:id="@+id/quitbt"
+            android:textColor="#e3f2fd"
+            android:background="#1a237e"
+            android:layout_below="@+id/leaderboardbtn"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_row="2"
+            android:layout_column="0"/>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/leaderboardbtn"
+            android:textColor="#e3f2fd"
+            android:background="#1a237e"
+            android:id="@+id/leaderboardbtn"
+            android:layout_above="@+id/playagainbtn"
+            android:layout_toRightOf="@+id/displayScorebtn"
+            android:layout_toEndOf="@+id/displayScorebtn"
+            android:layout_marginBottom="43dp"
+            android:layout_row="2"
+            android:layout_column="2"/>/>
+    </GridLayout>
+
+
 
 </RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="edu.uw.team5.huskymathchallenge.Menu"
+              android:background="#00b8d4"
+              android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:background="@drawable/mainmenu"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/choose_category"
+            android:textColor="#546e7a"
+            android:textAlignment="center"
+            android:id="@+id/choose_category"
+            android:gravity="bottom"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#546e7a"
+        android:textAlignment="center"
+        android:text="@string/instruction_button"
+        android:id="@+id/instruction_button"
+        android:layout_gravity="center_horizontal"
+        android:gravity="bottom"/>
+
+    <!--<include-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--layout="@layout/husky_picture_main_menu"-->
+    <!--android:layout_weight="0.68"/>-->
+
+</LinearLayout>

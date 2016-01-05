@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:background="#00b8d4"
+                  tools:context="edu.uw.team5.huskymathchallenge.AlgebraCategory.AlgebraActivity"
+                  android:weightSum="1">
+
+        <TextView
+            android:id="@+id/algebraQuestionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#e3f2fd"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+        <RadioGroup
+            android:id="@+id/radioAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.00" >
+            <RadioButton
+                android:id="@+id/radioAnswer1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#e3f2fd"
+                android:checked="true"
+                />
+            <RadioButton
+                android:id="@+id/radioAnswer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#e3f2fd"
+                />
+            <RadioButton
+                android:id="@+id/radioAnswer3"
+                android:textColor="#e3f2fd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+            <RadioButton
+                android:id="@+id/radioAnswer4"
+                android:textColor="#e3f2fd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </RadioGroup>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:textColor="#e3f2fd"
+            android:background="#1a237e"
+            android:id="@+id/buttonSubmit"
+            android:layout_gravity="right"/>
+
+        <TextView
+            android:id="@+id/scoreView"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+        <TextView
+            android:id="@+id/timeView"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/clock"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="221dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_weight="0.84"/>
+
+
+    </LinearLayout>

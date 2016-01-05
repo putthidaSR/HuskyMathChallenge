@@ -1,13 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="edu.uw.team5.huskymathchallenge.GeometryCategory.GeometryQuizActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/linearLayout" android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_horizontal"
+              android:background="@color/yellow">
 
-</RelativeLayout>
+<TextView android:id="@+id/titleTextView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Geometry Quiz" android:layout_marginBottom="10dp"
+          android:textSize="@dimen/title_size"
+          android:textColor="@color/black"
+          android:gravity="center">
+</TextView>
+
+    <ImageView android:id="@+id/shapeImageView"
+           android:adjustViewBounds="false"
+           android:layout_width="249dp"
+           android:layout_height="229dp"></ImageView>
+
+    <ImageView
+        android:layout_width="38dp"
+        android:layout_height="36dp"
+        android:background="@drawable/clockicon"
+        android:id="@+id/imageView4" android:layout_gravity="center_horizontal"/>
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/timeView" android:layout_gravity="center_horizontal"/>
+<TextView android:id="@+id/guessShapeTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="10dp" android:layout_marginTop="10dp"
+          android:text="What shape is this?"
+          android:textColor="@color/black"
+          android:layout_gravity="center_horizontal"></TextView>
+
+<TableLayout android:id="@+id/buttonTableLayout"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:stretchColumns="0,1,2">
+    <TableRow android:id="@+id/tableRow0"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"></TableRow>
+    <TableRow android:id="@+id/tableRow1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"></TableRow>
+    <TableRow android:id="@+id/tableRow2"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"></TableRow>
+</TableLayout>
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Score:"
+    android:textColor="@color/black"
+    android:id="@+id/score"/>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/scoreValue" android:layout_gravity="center_horizontal"/>
+<TextView android:id="@+id/answerTextView"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:textStyle="bold"
+          android:gravity="center"></TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lives:"
+        android:textColor="@color/black"
+        android:id="@+id/liveslabel"/>
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/lives"
+    android:layout_gravity="center_horizontal"/>
+</LinearLayout>
