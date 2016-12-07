@@ -1,0 +1,2 @@
+# HuskyMathChallenge
+Based on the Android platform, the Husky Math Challenge is a mobile application that allows users to play an interactive math game, and take math quizzes consisting of different categories including algebra, geometry, and calculus. Features included using web services to retrieve and store data for the app, saving data to the device’s storage using SQLite and SharedPreference, using Content Sharing to send or receive information pertinent to the app, signing-in with custom accounts, and implementing Facebook SDK.
